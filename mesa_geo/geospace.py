@@ -54,7 +54,7 @@ class GeoSpace:
 
     def add_agent(self, agent):
         """Add a single GeoAgent to the Geospace."""
-        if issubclass(agent, GeoAgent):
+        if isinstance(agent, GeoAgent):
             if hasattr(agent, "shape"):
                 self.agents.append(agent)
                 self.idx.insert(self.idx.maxid + 1, agent.shape.bounds)
