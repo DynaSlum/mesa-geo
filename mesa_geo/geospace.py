@@ -222,7 +222,7 @@ class GeoSpace:
             agent.idx_id = i
             shapes.append(agent.shape)
 
-        index_ids = range(i)
+        index_ids = range(i+1)
 
         # Bulk load the shapes
         def data_gen():
