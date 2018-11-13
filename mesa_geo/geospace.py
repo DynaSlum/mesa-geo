@@ -153,7 +153,10 @@ class GeoSpace:
             for index_id, agent in enumerate(agents):
                 yield (index_id, agent.shape.bounds, agent)
 
-        self.idx = index.Index(data_gen())
+        self.idx = index.Index()
+        for index_id, bounds, agent in data_gen():
+            self.idx.insert(index_id, bounds, agent)
+            agent.idx_id = index_id
         self.idx.maxid = len(agents)
         self.idx.agents = agents
 
