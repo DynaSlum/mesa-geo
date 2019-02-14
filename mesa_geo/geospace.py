@@ -149,11 +149,9 @@ class GeoSpace:
         # Bulk insert agents
         def data_gen():
             for agent in agents:
-                yield (agent.shape.bounds, agent)
+                yield (id(agent), agent.shape.bounds, agent)
 
-        self.idx = index.Index()
-        for bounds, agent in data_gen():
-            self.idx.insert(id(agent), bounds, agent)
+        self.idx = index.Index(data_gen())
         self.idx.agents = agents
 
     def update_bbox(self, bbox=None):
